@@ -1,0 +1,31 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "SnykContainer",
+          "version": "1.1293.0"
+        }
+      },
+      "results": [
+        {
+          "ruleId": "CVE-2024-21413",
+          "message": {
+            "text": "Microsoft Outlook Remote Code Execution Vulnerability (Moniker Link)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "usr/lib/office/moniker.dll"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

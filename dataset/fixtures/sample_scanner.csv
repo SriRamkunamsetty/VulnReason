@@ -1,0 +1,4 @@
+cve_id,package_name,installed_version,hostname,severity
+CVE-2024-21413,moniker-service,1.0.4,dmz-api-gateway.corp.net,CRITICAL
+CVE-2021-44228,log4j-core,2.14.1,internal-app-02.corp.net,CRITICAL
+CVE-2023-38606,kernel-core,5.15.0-76,pci-customer-db.internal,HIGH

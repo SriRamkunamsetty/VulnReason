@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "VR-Bench Scenario Schema",
+  "type": "object",
+  "required": ["scenario_id", "title", "description", "asset_context", "input_findings", "ground_truth"],
+  "properties": {
+    "scenario_id": {
+      "type": "string",
+      "pattern": "^VR-[0-9]{4}$"
+    },
+    "title": { "type": "string" },
+    "description": { "type": "string" },
+    "asset_context": {
+      "type": "object",
+      "required": ["hostname", "exposure", "criticality"],
+      "properties": {
+        "hostname": { "type": "string" },
+        "exposure": { "type": "string", "enum": ["INTERNET_FACING", "DMZ", "INTERNAL", "RESTRICTED_ISOLATED", "UNKNOWN"] },
+        "criticality": { "type": "string", "enum": ["MISSION_CRITICAL", "HIGH", "MEDIUM", "LOW"] },
+        "network_segment": { "type": "string" }
+      }
+    },
+    "input_findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["cve_id", "scanner_severity"],
+        "properties": {
+          "cve_id": { "type": "string" },
+          "package_name": { "type": "string" },
+          "installed_version": { "type": "string" },
+          "fixed_version": { "type": "string" },
+          "scanner_severity": { "type": "string" },
+          "description": { "type": "string" }
+        }
+      }
+    },
+    "ground_truth": {
+      "type": "object",
+      "required": ["true_priority_tier", "is_applicable", "has_lateral_attack_path"],
+      "properties": {
+        "true_priority_tier": { "type": "string", "enum": ["P0_URGENT", "P1_HIGH", "P2_MEDIUM", "P3_LOW"] },
+        "is_applicable": { "type": "boolean" },
+        "has_lateral_attack_path": { "type": "boolean" },
+        "adjudication_rationale": { "type": "string" }
+      }
+    },
+    "injected_prompt_payload": { "type": "string" },
+    "is_held_out": { "type": "boolean" }
+  }
+}
